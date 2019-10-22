@@ -1,0 +1,16 @@
+{
+    "name": "example.rxjs.ts",
+    "version": "0.0.1",
+    "description": "RxJS Examples",
+    "main": "index.js",
+    "author": "Philip Washington Sorst <philip@sorst.net>",
+    "license": "Apache-2",
+    "private": true,
+    "devDependencies": {
+        "ts-node": "^8.4.1",
+        "typescript": "^3.6.4"
+    },
+    "dependencies": {
+        "rxjs": "^6.5.3"
+    }
+}
