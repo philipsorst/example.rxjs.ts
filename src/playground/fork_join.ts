@@ -1,5 +1,5 @@
 import {forkJoin, interval, of} from 'rxjs';
-import {finalize, map, startWith, take, tap} from 'rxjs/operators';
+import {finalize, map, startWith, take} from 'rxjs/operators';
 
 const interval$ = interval(1000).pipe(
     startWith(-1),
@@ -7,7 +7,12 @@ const interval$ = interval(1000).pipe(
     finalize(() => console.log('Done interval$'))
 );
 
-forkJoin({
-    'one': interval$.pipe(take(2)),
-    'two': of('Immediate')
-}).pipe(tap(joined => console.log('joined', joined))).subscribe();
+/* Takes the last value of each observable */
+forkJoin([
+    interval$.pipe(take(2)),
+    of('Immediate')
+]).subscribe({
+    next: value => console.log('Next:', value),
+    error: error => console.error('Error:', error),
+    complete: () => console.log('Completed')
+});
