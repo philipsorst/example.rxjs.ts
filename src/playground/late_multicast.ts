@@ -12,6 +12,6 @@ const fakeApi$ = new Observable<Date>(subscriber => {
 
 const sharedApi$ = fakeApi$.pipe(shareReplay());
 
-sharedApi$.subscribe(date => console.log(date));
+sharedApi$.subscribe(date => console.log('Subscription', date));
 
-setTimeout(() => sharedApi$.subscribe(date => console.log(date)), 500);
+setTimeout(() => sharedApi$.subscribe(date => console.log('Delayed subscription', date)), 500);
